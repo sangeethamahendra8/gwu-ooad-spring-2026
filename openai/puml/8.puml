@@ -1,0 +1,43 @@
+@startuml
+left to right direction
+
+actor "User / Developer" as User
+actor "System Admin" as Admin
+actor "Worker Nodes" as WorkerNodes
+actor "ML Scheduler" as MLScheduler
+
+rectangle "Task Orchestration System" {
+
+  (View Task Status)
+  (Get System Metrics)
+  (Submit Tasks)
+  (Monitor Workers)
+  (Handle Failures)
+  (Execute Tasks)
+  (Predict Worker)
+  (Classify Tasks)
+  (Learn Results)
+
+  ' Associations
+  User --> (View Task Status)
+  User --> (Get System Metrics)
+  User --> (Submit Tasks)
+
+  Admin --> (Monitor Workers)
+  Admin --> (Handle Failures)
+
+  WorkerNodes --> (Execute Tasks)
+
+  MLScheduler --> (Predict Worker)
+  MLScheduler --> (Classify Tasks)
+  MLScheduler --> (Learn Results)
+
+  ' Include relationships (from dashed arrows)
+  (Submit Tasks) .> (Predict Worker) : <<include>>
+  (Submit Tasks) .> (Classify Tasks) : <<include>>
+  (Submit Tasks) .> (Learn Results) : <<include>>
+  (Execute Tasks) .> (Learn Results) : <<include>>
+
+}
+
+@enduml

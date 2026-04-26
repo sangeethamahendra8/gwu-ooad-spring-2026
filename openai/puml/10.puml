@@ -1,0 +1,55 @@
+@startuml
+left to right direction
+
+actor "Registered User" as RegisteredUser
+actor Volunteer
+actor Donor
+actor Admin
+actor "Branch Manager" as BranchManager
+
+actor "Email Service" as EmailService
+actor "Payment Gateway" as PaymentGateway
+
+' Generalization (roles under Registered User)
+Volunteer --|> RegisteredUser
+Donor --|> RegisteredUser
+Admin --|> RegisteredUser
+BranchManager --|> RegisteredUser
+
+rectangle "NGO Management System" {
+
+  (Complete Pickup)
+  (Reset Password)
+  (Make Donation)
+  (Manage Branch Managers)
+  (Manage Regions & Branches)
+  (Manage Volunteers)
+  (Assign Donation)
+  (Track Donation Status)
+  (Verify OTP)
+  (Download Receipt)
+
+  ' Associations
+  Volunteer --> (Complete Pickup)
+
+  RegisteredUser --> (Reset Password)
+
+  Donor --> (Make Donation)
+
+  Admin --> (Manage Branch Managers)
+  Admin --> (Manage Regions & Branches)
+  Admin --> (Manage Volunteers)
+
+  BranchManager --> (Assign Donation)
+  BranchManager --> (Track Donation Status)
+
+  EmailService --> (Verify OTP)
+  PaymentGateway --> (Make Donation)
+
+  ' Relationships
+  (Reset Password) .> (Verify OTP) : <<include>>
+  (Download Receipt) .> (Make Donation) : <<extend>>
+
+}
+
+@enduml
