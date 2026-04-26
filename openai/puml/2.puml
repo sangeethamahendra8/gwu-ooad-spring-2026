@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+actor Customer
+actor Restaurant
+
+rectangle "Online Order System" {
+
+  (Sign Up)
+  (Login)
+  (Browse Restaurant)
+  (Add to Cart)
+  (Checkout Order)
+
+  ' Associations
+  Customer --> (Sign Up)
+  Customer --> (Login)
+  Customer --> (Browse Restaurant)
+  Customer --> (Add to Cart)
+  Customer --> (Checkout Order)
+
+  Restaurant --> (Browse Restaurant)
+  Restaurant --> (Checkout Order)
+
+  ' Relationships
+  (Sign Up) .> (Login) : <<extend>>
+  (Checkout Order) .> (Add to Cart) : <<include>>
+
+}
+
+@enduml

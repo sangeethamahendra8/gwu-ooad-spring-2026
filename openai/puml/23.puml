@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+
+actor "User (Fan/Analyst)" as User
+actor "FastF1 Data Source" as DataSource
+
+rectangle "F1 Insights & Strategy Explorer" {
+
+  (Select Drivers)
+  (Select Season/Race/Session)
+  (View Tyre Stints)
+  (View Lap Time Comparison)
+  (View Position Over Laps)
+
+  ' Associations
+  User --> (Select Drivers)
+  User --> (Select Season/Race/Session)
+  User --> (View Tyre Stints)
+  User --> (View Lap Time Comparison)
+  User --> (View Position Over Laps)
+
+  DataSource --> (View Tyre Stints)
+  DataSource --> (View Lap Time Comparison)
+  DataSource --> (View Position Over Laps)
+
+  ' Include relationships
+  (View Tyre Stints) .> (Select Drivers) : <<include>>
+  (View Tyre Stints) .> (Select Season/Race/Session) : <<include>>
+
+  (View Lap Time Comparison) .> (Select Drivers) : <<include>>
+  (View Lap Time Comparison) .> (Select Season/Race/Session) : <<include>>
+
+  (View Position Over Laps) .> (Select Drivers) : <<include>>
+  (View Position Over Laps) .> (Select Season/Race/Session) : <<include>>
+
+}
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+left to right direction
+
+actor Developer
+actor "Repository Admin" as RepositoryAdmin
+actor GitHub
+
+rectangle "Code Review Automation Assistant System" {
+
+  (View Dashboard)
+  (View Review Comments)
+  (Submit Pull Requests)
+  (Connect Repository)
+  (Generate Report)
+  (Configure Rules)
+
+  ' Associations
+  Developer --> (View Dashboard)
+  Developer --> (View Review Comments)
+  Developer --> (Submit Pull Requests)
+
+  RepositoryAdmin --> (Connect Repository)
+  RepositoryAdmin --> (Generate Report)
+  RepositoryAdmin --> (Configure Rules)
+
+  GitHub --> (Submit Pull Requests)
+
+}
+
+@enduml

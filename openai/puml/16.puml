@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+
+actor User
+actor "Developer / Admin" as Admin
+
+rectangle "Traffic Camera Browser" {
+
+  (Register Account)
+  (Watch Live Traffic Camera)
+  (Watch Past Playback)
+  (Add Camera to Favorites)
+  (View Browsing History)
+  (Manage Cameras)
+
+  ' Associations
+  User --> (Register Account)
+  User --> (Watch Live Traffic Camera)
+  User --> (Watch Past Playback)
+  User --> (Add Camera to Favorites)
+  User --> (View Browsing History)
+
+  Admin --> (Manage Cameras)
+
+}
+
+@enduml

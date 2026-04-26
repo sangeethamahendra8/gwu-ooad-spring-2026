@@ -1,0 +1,63 @@
+@startuml
+left to right direction
+
+actor Member
+actor "Library Staff" as LibraryStaff
+actor "System Admin" as SystemAdmin
+actor "Email/SMS Server" as EmailSMS
+actor "Online Payment Service" as PaymentService
+
+rectangle "Digital Library System" {
+
+  (Alert Dispatch)
+  (Request Borrow)
+  (Return Item)
+  (Fine Settlement)
+  (Account Overview)
+  (Browse Books)
+  (Check Availability)
+  (Extend Loan)
+  (Place Hold)
+  (Catalog Maintenance)
+  (Approve Loan)
+  (Receive Returns)
+  (Create Membership)
+  (Usage Reports)
+  (Access Control Setup)
+  (Policy Configuration)
+
+  ' Member associations
+  Member --> (Request Borrow)
+  Member --> (Return Item)
+  Member --> (Fine Settlement)
+  Member --> (Account Overview)
+  Member --> (Browse Books)
+  Member --> (Check Availability)
+  Member --> (Extend Loan)
+  Member --> (Place Hold)
+
+  ' Library Staff associations
+  LibraryStaff --> (Catalog Maintenance)
+  LibraryStaff --> (Approve Loan)
+  LibraryStaff --> (Receive Returns)
+  LibraryStaff --> (Create Membership)
+
+  ' System Admin associations
+  SystemAdmin --> (Usage Reports)
+  SystemAdmin --> (Access Control Setup)
+  SystemAdmin --> (Policy Configuration)
+
+  ' External systems
+  EmailSMS --> (Alert Dispatch)
+  PaymentService --> (Fine Settlement)
+
+  ' Include relationships (interpreted from dashed lines)
+  (Request Borrow) .> (Check Availability) : <<include>>
+  (Place Hold) .> (Check Availability) : <<include>>
+
+  ' Extend relationship
+  (Fine Settlement) .> (Return Item) : <<extend>>
+
+}
+
+@enduml

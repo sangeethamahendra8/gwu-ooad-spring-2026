@@ -1,0 +1,29 @@
+@startuml
+left to right direction
+
+actor "Workflow Designer" as WorkflowDesigner
+actor "Workflow Engine" as WorkflowEngine
+actor "System Administrator" as SystemAdministrator
+
+rectangle "Extensible Workflow Engine" {
+
+  (Define Workflow)
+  (Manage Execution State)
+  (Handle Completion / Failure)
+  (Execute Workflow)
+  (Evaluate Conditions)
+  (Extend Workflow Engine)
+
+  ' Associations
+  WorkflowDesigner --> (Define Workflow)
+
+  WorkflowEngine --> (Manage Execution State)
+  WorkflowEngine --> (Handle Completion / Failure)
+  WorkflowEngine --> (Execute Workflow)
+  WorkflowEngine --> (Evaluate Conditions)
+
+  SystemAdministrator --> (Extend Workflow Engine)
+
+}
+
+@enduml

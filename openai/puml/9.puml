@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+
+actor "Business User" as BusinessUser
+actor "System Admin" as SystemAdmin
+actor "LLM Provider" as LLMProvider
+actor "Business Database" as BusinessDB
+
+rectangle "GenAI Conversational BI Assistant" {
+
+  (Ask BI Question in Natural Language)
+  (Generate SQL via GenAI)
+  (Execute SQL and Fetch Data)
+  (Visualize and Summarize)
+  (Semantic Match via Vector Search)
+  (Add Training Data to Database)
+  (Provide Feedback)
+
+  ' Associations
+  BusinessUser --> (Ask BI Question in Natural Language)
+  BusinessUser --> (Provide Feedback)
+
+  SystemAdmin --> (Add Training Data to Database)
+
+  LLMProvider --> (Generate SQL via GenAI)
+  LLMProvider --> (Visualize and Summarize)
+
+  BusinessDB --> (Execute SQL and Fetch Data)
+  BusinessDB --> (Add Training Data to Database)
+
+  ' Include relationships
+  (Ask BI Question in Natural Language) .> (Generate SQL via GenAI) : <<include>>
+  (Generate SQL via GenAI) .> (Semantic Match via Vector Search) : <<include>>
+  (Generate SQL via GenAI) .> (Execute SQL and Fetch Data) : <<include>>
+  (Execute SQL and Fetch Data) .> (Visualize and Summarize) : <<include>>
+
+  ' Extend relationship
+  (Provide Feedback) .> (Visualize and Summarize) : <<extend>>
+
+}
+
+@enduml

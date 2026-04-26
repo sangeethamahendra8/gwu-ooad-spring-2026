@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+actor User
+actor "Notification System" as NotificationSystem
+
+rectangle "NOIA Meetup System" {
+
+  (View Meetup Details)
+  (Join Meetup)
+  (Create Meetup)
+  (View Meetups)
+  (Receive Notifications)
+
+  ' Associations
+  User --> (View Meetup Details)
+  User --> (Join Meetup)
+  User --> (Create Meetup)
+  User --> (View Meetups)
+
+  NotificationSystem --> (Receive Notifications)
+
+  ' Include relationship
+  (Join Meetup) .> (View Meetups) : <<include>>
+
+}
+
+@enduml

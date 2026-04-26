@@ -1,0 +1,35 @@
+@startuml
+left to right direction
+
+actor User
+actor "External Banking System" as BankingSystem
+actor "Notification System" as NotificationSystem
+
+rectangle "Personal Finance Management System" {
+
+  (Import Transactions)
+  (Categorize Expense)
+  (Manage Accounts)
+  (View Analytics Dashboard)
+  (Set Budget Thresholds)
+  (Receive Budget Alerts)
+  (Authenticate User)
+
+  ' Associations
+  User --> (Import Transactions)
+  User --> (Manage Accounts)
+  User --> (View Analytics Dashboard)
+  User --> (Set Budget Thresholds)
+
+  BankingSystem --> (Import Transactions)
+  NotificationSystem --> (Receive Budget Alerts)
+
+  ' Include relationships
+  (Import Transactions) .> (Categorize Expense) : <<include>>
+  (Import Transactions) .> (Authenticate User) : <<include>>
+  (View Analytics Dashboard) .> (Authenticate User) : <<include>>
+  (Set Budget Thresholds) .> (Authenticate User) : <<include>>
+
+}
+
+@enduml
