@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+
+actor User
+actor "External Banking System" <<external>>
+actor "Notification System" <<external>>
+
+rectangle "System" {
+  (Import Transaction)
+  (Categorize Expense)
+  (Manage Accounts)
+  (View Analytics Dashboard)
+  (Set Budget Thresholds)
+  (Receive Budget Alerts)
+  (Authenticate User)
+}
+
+User --> (Import Transaction)
+User --> (Manage Accounts)
+User --> (View Analytics Dashboard)
+User --> (Set Budget Thresholds)
+
+"External Banking System" --> (Import Transaction)
+
+"Notification System" --> (Receive Budget Alerts)
+
+(Import Transaction) .> (Categorize Expense) : <<include>>
+(Manage Accounts) .> (Authenticate User) : <<include>>
+(View Analytics Dashboard) .> (Authenticate User) : <<include>>
+(Set Budget Thresholds) .> (Authenticate User) : <<include>>
+
+@enduml

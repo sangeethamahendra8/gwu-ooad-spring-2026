@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor User
+actor Student
+actor "Notification System"
+
+rectangle "NOLA" {
+  (View Meetup Details)
+  (Join Meetup)
+  (Create Meetup)
+  (View Meetup)
+  (Receive Notification)
+}
+
+User --> (View Meetup Details)
+User --> (Join Meetup)
+User --> (Create Meetup)
+User --> (View Meetup)
+
+Student --> (View Meetup)
+
+"Notification System" --> (Receive Notification)
+
+@enduml

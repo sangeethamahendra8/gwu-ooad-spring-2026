@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor "User (Primary)"
+actor "Developer / Admin (Secondary)"
+
+rectangle "Traffic Camera Browser" {
+  (Register Account)
+  (Watch Live Traffic Camera)
+  (Watch Past Playback - last 72 hours)
+  (Add Camera to Favorites)
+  (View Browsing History)
+  (Manage Cameras - Add / Remove)
+}
+
+"User (Primary)" --> (Register Account)
+"User (Primary)" --> (Watch Live Traffic Camera)
+"User (Primary)" --> (Watch Past Playback - last 72 hours)
+"User (Primary)" --> (Add Camera to Favorites)
+"User (Primary)" --> (View Browsing History)
+
+"Developer / Admin (Secondary)" --> (Manage Cameras - Add / Remove)
+"Developer / Admin (Secondary)" --> (View Browsing History)
+
+@enduml

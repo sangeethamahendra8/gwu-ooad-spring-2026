@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+actor User
+actor Organizer
+actor "Notification Service"
+
+rectangle "PlanPal (mobile app)" {
+  (View Event Details)
+  (Respond to Invitation - RSVP)
+  (View Upcoming Events)
+  (Create Event)
+  (Edit Event)
+  (Invite Participants)
+  (Send Update Notification)
+}
+
+User --> (View Event Details)
+User --> (Respond to Invitation - RSVP)
+User --> (View Upcoming Events)
+
+Organizer --> (Create Event)
+Organizer --> (Edit Event)
+Organizer --> (Invite Participants)
+
+(Edit Event) .> (Send Update Notification) : <<include>>
+(Invite Participants) .> (Send Update Notification) : <<include>>
+
+"Notification Service" --> (Send Update Notification)
+
+@enduml

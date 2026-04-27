@@ -1,0 +1,33 @@
+@startuml
+left to right direction
+
+actor "Student / Learner"
+actor "System Admin"
+
+rectangle "Learn Mesh Study Group Management" {
+  (Create Study Group)
+  (View Group Recommendation)
+  (Register Account)
+  (Join Study Group)
+  (Set Learning Preferences)
+  (Manage Users)
+  (Manage System)
+  (Login)
+  (Match Users to Groups)
+}
+
+"Student / Learner" --> (Create Study Group)
+"Student / Learner" --> (View Group Recommendation)
+"Student / Learner" --> (Register Account)
+"Student / Learner" --> (Join Study Group)
+"Student / Learner" --> (Set Learning Preferences)
+
+"System Admin" --> (Manage Users)
+"System Admin" --> (Manage System)
+
+(View Group Recommendation) .> (Match Users to Groups) : <<include>>
+
+(Register Account) .> (Login) : <<extend>>
+(Set Learning Preferences) .> (Login) : <<extend>>
+
+@enduml

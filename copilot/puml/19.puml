@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+
+actor Instructor
+actor Student
+actor "Auth Service"
+actor "Email Service"
+
+rectangle "Learning Management System" {
+  (View Course Content)
+  (Send Notification)
+  (Grade Assignment)
+  (Submit Assignment)
+  (Enroll in Course)
+  (Sign In)
+}
+
+Instructor --> (Grade Assignment)
+Instructor --> (Send Notification)
+Instructor --> (View Course Content)
+
+Student --> (Submit Assignment)
+Student --> (Enroll in Course)
+Student --> (View Course Content)
+
+"Auth Service" --> (Sign In)
+
+"Email Service" --> (Send Notification)
+
+(Grade Assignment) .> (Sign In) : <<include>>
+(Submit Assignment) .> (Sign In) : <<include>>
+(Enroll in Course) .> (Sign In) : <<extend>>
+
+@enduml

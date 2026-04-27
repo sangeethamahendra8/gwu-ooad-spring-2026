@@ -1,0 +1,39 @@
+@startuml
+left to right direction
+
+actor Customer
+actor Admin
+actor Staff
+
+rectangle "Smart Queue System" {
+  (Book Appointment)
+  (Cancel Appointment)
+  (Join Virtual Queue)
+  (Manage Service)
+  (Manage Staff Account)
+  (Call Customer and Complete Service)
+  (Register/Login)
+  (Handle Invalid Credentials)
+}
+
+Customer --> (Book Appointment)
+Customer --> (Cancel Appointment)
+Customer --> (Join Virtual Queue)
+
+Admin --> (Manage Service)
+Admin --> (Manage Staff Account)
+
+Staff --> (Call Customer and Complete Service)
+
+(Book Appointment) .> (Register/Login) : <<include>>
+(Cancel Appointment) .> (Register/Login) : <<include>>
+(Join Virtual Queue) .> (Register/Login) : <<include>>
+
+(Manage Service) .> (Register/Login) : <<include>>
+(Manage Staff Account) .> (Register/Login) : <<include>>
+
+(Call Customer and Complete Service) .> (Register/Login) : <<include>>
+
+(Register/Login) .> (Handle Invalid Credentials) : <<extend>>
+
+@enduml

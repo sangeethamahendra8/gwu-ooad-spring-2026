@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+
+actor "User (Analyst)"
+actor "External Data Source"
+
+rectangle "DataInsight AI System" {
+  (Upload Multimodal Data)
+  (Search & Query Insights)
+  (Ingest External Data)
+  (Process Data by Modality)
+  (Run AI Analysis Task)
+  (View Explainable Results)
+}
+
+"User (Analyst)" --> (Upload Multimodal Data)
+"User (Analyst)" --> (Search & Query Insights)
+
+"External Data Source" --> (Ingest External Data)
+
+(Ingest External Data) .> (Process Data by Modality) : <<include>>
+(Search & Query Insights) .> (Process Data by Modality) : <<include>>
+(Process Data by Modality) .> (Run AI Analysis Task) : <<include>>
+(Run AI Analysis Task) .> (View Explainable Results) : <<include>>
+
+@enduml
