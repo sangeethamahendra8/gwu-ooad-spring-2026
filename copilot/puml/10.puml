@@ -1,0 +1,48 @@
+@startuml
+left to right direction
+
+actor Volunteer
+actor Donor
+actor Admin
+actor "Branch Manager"
+actor "Registered User"
+actor "Email Service"
+actor "Payment Gateway"
+
+rectangle "NGO Management Systems" {
+  (Complete Pickup)
+  (Reset Password)
+  (Make Donation)
+  (Manage Branch Managers)
+  (Manage Regions & Branches)
+  (Manage Volunteers)
+  (Assign Donation)
+  (Track Donation Status)
+  (Verify OTP)
+  (Download Receipt)
+}
+
+Volunteer --> (Complete Pickup)
+Volunteer --> (Track Donation Status)
+
+Donor --> (Make Donation)
+Donor --> (Download Receipt)
+Donor --> (Verify OTP)
+
+Admin --> (Manage Branch Managers)
+Admin --> (Manage Regions & Branches)
+Admin --> (Manage Volunteers)
+Admin --> (Assign Donation)
+
+"Branch Manager" --> (Manage Volunteers)
+"Branch Manager" --> (Track Donation Status)
+
+"Registered User" --> (Reset Password)
+"Registered User" --> (Verify OTP)
+
+"Email Service" --> (Verify OTP)
+"Email Service" --> (Reset Password)
+
+"Payment Gateway" --> (Make Donation)
+
+@enduml

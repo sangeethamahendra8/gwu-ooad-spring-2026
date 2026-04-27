@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+
+actor Renter
+actor Host
+
+rectangle "Smart Rental Platform" {
+  (Make Payment)
+  (Manage Availability)
+  (Request Booking)
+  (Search & Filter Listings)
+  (Chat with GenAI Concierge)
+  (Manage Listing)
+}
+
+Renter --> (Make Payment)
+Renter --> (Request Booking)
+Renter --> (Search & Filter Listings)
+Renter --> (Chat with GenAI Concierge)
+
+Host --> (Manage Availability)
+Host --> (Manage Listing)
+Host --> (Chat with GenAI Concierge)
+
+@enduml

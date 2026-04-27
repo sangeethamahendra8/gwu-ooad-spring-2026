@@ -1,0 +1,53 @@
+@startuml
+left to right direction
+
+actor Members
+actor "Library Staff"
+actor "System Admin"
+actor "Email/SMS Server"
+actor "Online Payment Service"
+
+rectangle "Digital Library System" {
+  (Alert Dispatch)
+  (Request Borrow)
+  (Return Item)
+  (Fine Settlement / Refund)
+  (Account Overview)
+  (Browse Books)
+  (Check Availability)
+  (Extend Loan)
+  (Place Hold)
+  (Catalog Maintenance)
+  (Approve Loan)
+  (Receive Returns)
+  (Create Membership)
+  (Usage Reports)
+  (Access Control Setup)
+  (Policy Configuration)
+}
+
+Members --> (Request Borrow)
+Members --> (Return Item)
+Members --> (Account Overview)
+Members --> (Browse Books)
+Members --> (Check Availability)
+Members --> (Extend Loan)
+Members --> (Place Hold)
+
+(Request Borrow) .> (Fine Settlement / Refund) : <<include>>
+(Return Item) .> (Fine Settlement / Refund) : <<include>>
+
+"Library Staff" --> (Catalog Maintenance)
+"Library Staff" --> (Approve Loan)
+"Library Staff" --> (Receive Returns)
+"Library Staff" --> (Create Membership)
+"Library Staff" --> (Usage Reports)
+
+"System Admin" --> (Access Control Setup)
+"System Admin" --> (Policy Configuration)
+
+"Email/SMS Server" --> (Alert Dispatch)
+
+"Online Payment Service" --> (Fine Settlement / Refund)
+
+@enduml

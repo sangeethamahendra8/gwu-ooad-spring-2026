@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+
+actor "Job Seeker"
+actor "File System"
+
+rectangle "Job Application Tracker" {
+  (Search Applications)
+  (Delete Applications)
+  (View Applications)
+  (Update Application Status)
+  (Add Job Application)
+}
+
+"Job Seeker" --> (Search Applications)
+"Job Seeker" --> (Delete Applications)
+"Job Seeker" --> (View Applications)
+"Job Seeker" --> (Update Application Status)
+"Job Seeker" --> (Add Job Application)
+
+"File System" --> (Search Applications)
+"File System" --> (Delete Applications)
+"File System" --> (View Applications)
+"File System" --> (Update Application Status)
+"File System" --> (Add Job Application)
+
+@enduml

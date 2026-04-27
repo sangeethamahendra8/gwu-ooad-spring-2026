@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+actor "Parking User"
+actor "System Administrator"
+actor "Payment Gateway"
+
+rectangle "Smart Parking System" {
+  (Park Vehicle)
+  (Exit Vehicle)
+  (Register Vehicle)
+  (Pay Parking Fee)
+  (Monitor Parking Lot)
+  (Manage Parking Configuration)
+}
+
+"Parking User" --> (Park Vehicle)
+"Parking User" --> (Exit Vehicle)
+
+(Park Vehicle) .> (Register Vehicle) : <<include>>
+(Exit Vehicle) .> (Pay Parking Fee) : <<include>>
+
+"System Administrator" --> (Monitor Parking Lot)
+"System Administrator" --> (Manage Parking Configuration)
+
+"Payment Gateway" --> (Pay Parking Fee)
+
+@enduml

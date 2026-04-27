@@ -1,0 +1,40 @@
+@startuml
+left to right direction
+
+actor "User/Developer"
+actor "System Admin"
+actor "Worker Nodes"
+actor "ML Scheduler"
+
+rectangle "Task Orchestrator System" {
+  (View Task Status)
+  (Get System Metrics)
+  (Submit Tasks)
+  (Predict Workers)
+  (Classify Tasks)
+  (Monitor Workers)
+  (Handle Failures)
+  (Execute Tasks)
+  (Learn Results)
+}
+
+"User/Developer" --> (View Task Status)
+"User/Developer" --> (Get System Metrics)
+"User/Developer" --> (Submit Tasks)
+
+(Submit Tasks) .> (Predict Workers) : <<include>>
+(Submit Tasks) .> (Classify Tasks) : <<include>>
+
+"System Admin" --> (Monitor Workers)
+"System Admin" --> (Handle Failures)
+
+(Handle Failures) .> (Classify Tasks) : <<include>>
+
+"Worker Nodes" --> (Execute Tasks)
+(Execute Tasks) .> (Learn Results) : <<include>>
+
+"ML Scheduler" --> (Predict Workers)
+"ML Scheduler" --> (Classify Tasks)
+"ML Scheduler" --> (Learn Results)
+
+@enduml
