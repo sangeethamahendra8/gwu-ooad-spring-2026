@@ -1,0 +1,26 @@
+@startuml
+
+left to right direction
+
+actor Renter as R
+actor Host as H
+
+rectangle "Smart Rental Platform" {
+  usecase "Make Payment" as UC1
+  usecase "Manage Availability" as UC2
+  usecase "Request Booking" as UC3
+  usecase "Search & Filter Listings" as UC4
+  usecase "Chat with GenAI Concierge" as UC5
+  usecase "Manage Listing" as UC6
+}
+
+R --> UC1
+R --> UC3
+R --> UC4
+R --> UC5
+
+H --> UC2
+H --> UC5
+H --> UC6
+
+@enduml

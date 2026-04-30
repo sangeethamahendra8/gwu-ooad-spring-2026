@@ -1,0 +1,33 @@
+@startuml
+
+left to right direction
+
+actor "Student / Learner" as SL
+actor "System Admin" as SA
+
+rectangle "LearnMesh Study Group Management" {
+  usecase "Create Study Group" as UC1
+  usecase "View Group Recommendation" as UC2
+  usecase "Register Account" as UC3
+  usecase "Join Study Group" as UC4
+  usecase "Set Learning Preferences" as UC5
+  usecase "Manage Users" as UC6
+  usecase "Manage System" as UC7
+  usecase "Match Users to Groups" as UC8
+  usecase "Login" as UC9
+}
+
+SL --> UC1
+SL --> UC2
+SL --> UC3
+SL --> UC4
+SL --> UC5
+
+SA --> UC6
+SA --> UC7
+
+UC2 ..> UC8 : <<include>>
+UC4 ..> UC9 : <<include>>
+UC5 ..> UC9 : <<extend>>
+
+@enduml

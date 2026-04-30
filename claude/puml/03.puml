@@ -1,0 +1,27 @@
+@startuml
+
+left to right direction
+
+actor "Workflow Designer" as WD
+actor "Workflow Engine" as WE
+actor "System Administrator" as SA
+
+rectangle "Extensible Workflow Engine" {
+  usecase "Define Workflow" as UC1
+  usecase "Manage Execution State" as UC2
+  usecase "Handle Completion / Failure" as UC3
+  usecase "Execute Workflow" as UC4
+  usecase "Evaluate Conditions" as UC5
+  usecase "Extend Workflow Engine" as UC6
+}
+
+WD --> UC1
+
+WE --> UC2
+WE --> UC3
+WE --> UC4
+WE --> UC5
+
+SA --> UC6
+
+@enduml

@@ -1,0 +1,55 @@
+@startuml
+
+left to right direction
+
+actor Member as M
+actor "Library Staff" as LS
+actor "System Admin" as SA
+actor "Email/SMS Server" as ES
+actor "Online Payment Service" as OPS
+
+rectangle "Digital Library System" {
+  usecase "Alert Dispatch" as UC1
+  usecase "Request Borrow" as UC2
+  usecase "Return Items" as UC3
+  usecase "Fine Settlement" as UC4
+  usecase "Account Overview" as UC5
+  usecase "Browse Books" as UC6
+  usecase "Check Availability" as UC7
+  usecase "Extend Loan" as UC8
+  usecase "Place Hold" as UC9
+  usecase "Catalog Maintenance" as UC10
+  usecase "Approve Loan" as UC11
+  usecase "Receive Returns" as UC12
+  usecase "Create Membership" as UC13
+  usecase "Usage Reports" as UC14
+  usecase "Access Control Setup" as UC15
+  usecase "Policy Configuration" as UC16
+}
+
+M --> UC2
+M --> UC3
+M --> UC4
+M --> UC5
+M --> UC6
+M --> UC7
+M --> UC8
+M --> UC9
+
+LS --> UC10
+LS --> UC11
+LS --> UC12
+LS --> UC13
+LS --> UC14
+
+SA --> UC15
+SA --> UC16
+
+UC1 --> ES
+UC4 --> OPS
+
+UC2 ..> UC7 : <<include>>
+UC8 ..> UC7 : <<include>>
+UC4 ..> UC1 : <<extend>>
+
+@enduml

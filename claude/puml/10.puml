@@ -1,0 +1,49 @@
+@startuml
+
+left to right direction
+
+actor Volunteer as V
+actor Donor as D
+actor Admin as A
+actor "Branch Manager" as BM
+actor "Registered User" as RU
+actor "Email Service" as ES
+actor "Payment Gateway" as PG
+
+rectangle "NGO Management System" {
+  usecase "Complete Pickup" as UC1
+  usecase "Reset Password" as UC2
+  usecase "Verify OTP" as UC3
+  usecase "Make Donation" as UC4
+  usecase "Download Receipt" as UC5
+  usecase "Manage Branch Managers" as UC6
+  usecase "Manage Regions & Branches" as UC7
+  usecase "Manage Volunteers" as UC8
+  usecase "Assign Donation" as UC9
+  usecase "Track Donation Status" as UC10
+}
+
+RU <|-- V
+RU <|-- D
+RU <|-- A
+RU <|-- BM
+
+V --> UC1
+
+RU --> UC2
+UC2 ..> UC3 : <<include>>
+
+D --> UC4
+UC4 ..> UC5 : <<extend>>
+
+A --> UC6
+A --> UC7
+A --> UC8
+
+BM --> UC9
+BM --> UC10
+
+ES --> UC3
+PG --> UC4
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+
+left to right direction
+
+actor "Business User" as BU
+actor "System Admin" as SA
+actor "LLM Provider" as LLM
+actor "Business Database" as DB
+
+rectangle "GenAI Conversational BI Assistant" {
+  usecase "UC1: Ask BI Question in Natural Language" as UC1
+  usecase "UC2: Add Training Data to Database" as UC2
+  usecase "UC3: Semantic Match via Vector Search" as UC3
+  usecase "UC4: Generate SQL via GenAI" as UC4
+  usecase "UC5: Execute SQL and Fetch Data" as UC5
+  usecase "UC6: Visualize and Summarize (Charts + Narrative)" as UC6
+  usecase "UC7: Provide Feedback (Approve / Disapprove)" as UC7
+}
+
+BU --> UC1
+BU --> UC7
+
+SA --> UC2
+SA --> UC4
+
+UC1 ..> UC3 : <<include>>
+UC1 ..> UC4 : <<include>>
+UC4 ..> UC5 : <<include>>
+UC5 ..> UC6 : <<include>>
+
+LLM --> UC4
+LLM --> UC3
+LLM --> UC6
+
+DB --> UC5
+DB --> UC7
+
+@enduml

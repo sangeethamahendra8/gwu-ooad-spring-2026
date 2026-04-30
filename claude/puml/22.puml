@@ -1,0 +1,29 @@
+@startuml
+
+left to right direction
+
+actor "Parking User" as PU
+actor "System Administrator" as SA
+actor "Payment Gateway" as PG
+
+rectangle "Smart Parking System" {
+  usecase "Park Vehicle" as UC1
+  usecase "Exit Vehicle" as UC2
+  usecase "Monitor Parking Lot" as UC3
+  usecase "Manage Parking Configuration" as UC4
+  usecase "Register Vehicle" as UC5
+  usecase "Pay Parking Fee" as UC6
+}
+
+PU --> UC1
+PU --> UC2
+
+SA --> UC3
+SA --> UC4
+
+UC1 ..> UC5 : <<include>>
+UC2 ..> UC6 : <<include>>
+
+PG --> UC6
+
+@enduml

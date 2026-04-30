@@ -1,0 +1,38 @@
+@startuml
+
+left to right direction
+
+actor Instructor as I
+actor Student as S
+actor "Auth Service" as AS
+actor "Email Service" as ES
+
+rectangle "Learning Management System" {
+  usecase "View Course Content" as UC1
+  usecase "Send Notification" as UC2
+  usecase "Grade Assignment" as UC3
+  usecase "Submit Assignment" as UC4
+  usecase "Enroll in Course" as UC5
+  usecase "Sign In" as UC6
+}
+
+I --> UC1
+I --> UC2
+I --> UC3
+
+S --> UC1
+S --> UC2
+S --> UC4
+S --> UC5
+
+AS --> UC6
+
+ES --> UC2
+
+UC3 ..> UC6 : <<include>>
+UC4 ..> UC6 : <<include>>
+UC5 ..> UC6 : <<include>>
+
+UC2 ..> UC4 : <<extend>>
+
+@enduml

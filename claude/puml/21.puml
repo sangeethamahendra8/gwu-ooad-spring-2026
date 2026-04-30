@@ -1,0 +1,32 @@
+@startuml
+
+left to right direction
+
+actor User as U
+actor Organizer as O
+actor "Notification Service" as NS
+
+rectangle "PlanPal (Mobile App)" {
+  usecase "View Event Details" as UC1
+  usecase "Respond to Invitation (RSVP)" as UC2
+  usecase "View Upcoming Events" as UC3
+  usecase "Create Event" as UC4
+  usecase "Edit Event" as UC5
+  usecase "Invite Participants" as UC6
+  usecase "Send Update Notification" as UC7
+}
+
+U --> UC1
+U --> UC2
+U --> UC3
+
+O --> UC4
+O --> UC5
+O --> UC6
+
+UC5 ..> UC7 : <<include>>
+UC6 ..> UC7 : <<include>>
+
+NS --> UC7
+
+@enduml

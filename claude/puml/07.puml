@@ -1,0 +1,28 @@
+@startuml
+
+left to right direction
+
+actor Developer as Dev
+actor "Repository Admin" as RA
+actor Github as GH
+
+rectangle "Code Review Automation Assistant System" {
+  usecase "View Dashboard" as UC1
+  usecase "View Review Comments" as UC2
+  usecase "Submit Pull Requests" as UC3
+  usecase "Connect Repository" as UC4
+  usecase "Generate Report" as UC5
+  usecase "Configure Rules" as UC6
+}
+
+Dev --> UC1
+Dev --> UC2
+Dev --> UC3
+
+RA --> UC4
+RA --> UC5
+RA --> UC6
+
+UC3 --> GH : webhook trigger
+
+@enduml

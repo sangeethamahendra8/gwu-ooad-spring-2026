@@ -1,0 +1,27 @@
+@startuml
+
+left to right direction
+
+actor Customer
+actor Restaurant
+
+rectangle "Online Order System" {
+  usecase "Sign Up" as UC1
+  usecase "Login" as UC2
+  usecase "Browse Restaurant" as UC3
+  usecase "Add to Cart" as UC4
+  usecase "Checkout Order" as UC5
+}
+
+Customer --> UC1
+Customer --> UC2
+Customer --> UC3
+Customer --> UC4
+Customer --> UC5
+
+UC2 ..> UC1 : <<include>>
+UC3 ..> UC2 : <<include>>
+
+Restaurant --> UC3
+
+@enduml

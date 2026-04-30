@@ -1,0 +1,40 @@
+@startuml
+
+left to right direction
+
+actor "User / Developer" as UD
+actor "System Admin" as SA
+actor "Worker Nodes" as WN
+actor "ML Scheduler" as ML
+
+rectangle "Task Orchestrator System" {
+  usecase "View Task Status" as UC1
+  usecase "Get System Metrics" as UC2
+  usecase "Submit Tasks" as UC3
+  usecase "Monitor Workers" as UC4
+  usecase "Handle Failures" as UC5
+  usecase "Execute Tasks" as UC6
+  usecase "Find Worker" as UC7
+  usecase "Classify Tasks" as UC8
+  usecase "Learn Results" as UC9
+}
+
+UD --> UC1
+UD --> UC2
+UD --> UC3
+
+SA --> UC4
+SA --> UC5
+
+WN --> UC6
+
+UC2 ..> UC7 : <<include>>
+UC3 ..> UC7 : <<include>>
+UC3 ..> UC8 : <<include>>
+UC5 ..> UC8 : <<include>>
+UC6 ..> UC9 : <<include>>
+
+ML --> UC8
+ML --> UC9
+
+@enduml

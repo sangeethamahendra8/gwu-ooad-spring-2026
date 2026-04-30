@@ -1,0 +1,34 @@
+@startuml
+
+left to right direction
+
+actor "External Banking System" as EBS <<external system>>
+actor "User" as U
+actor "Notification System" as NS <<external system>>
+
+rectangle "Personal Finance System" {
+  usecase "Import Transaction" as UC1
+  usecase "Manage Accounts" as UC2
+  usecase "View Analytics Dashboard" as UC3
+  usecase "Set Budget Thresholds" as UC4
+  usecase "Receive Budget Alerts" as UC5
+  usecase "Categorize Expense" as UC6
+  usecase "Authenticate User" as UC7
+}
+
+EBS --> UC1
+NS --> UC5
+
+U --> UC1
+U --> UC2
+U --> UC3
+U --> UC4
+U --> UC5
+
+UC1 ..> UC6 : <<include>>
+UC2 ..> UC7 : <<include>>
+UC3 ..> UC7 : <<include>>
+UC4 ..> UC7 : <<include>>
+UC6 ..> UC7 : <<include>>
+
+@enduml

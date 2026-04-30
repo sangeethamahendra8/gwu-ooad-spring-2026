@@ -1,0 +1,28 @@
+@startuml
+
+left to right direction
+
+actor "Job Seeker" as JS
+actor "File System" as FS
+
+rectangle "Job Application Tracker" {
+  usecase "Search Applications" as UC1
+  usecase "Delete Applications" as UC2
+  usecase "View Applications" as UC3
+  usecase "Update Application Status" as UC4
+  usecase "Add Job Application" as UC5
+}
+
+JS --> UC1
+JS --> UC2
+JS --> UC3
+JS --> UC4
+JS --> UC5
+
+UC1 --> FS
+UC2 --> FS
+UC3 --> FS
+UC4 --> FS
+UC5 --> FS
+
+@enduml
